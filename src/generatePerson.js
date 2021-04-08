@@ -37,9 +37,26 @@ const secondNames = [
   'von Bradhard',
 ];
 
-const age = () => Math.floor(Math.random() * 100 + 1);
+const job = [
+  'Judge',
+  'Lawyer',
+  'Plumber',
+  'Painter',
+  'Postman',
+  'Secretary',
+  'Waiter',
+  'Teacher',
+  'Soldier',
+  'Actor',
+  'Tailor',
+  'Gamer',
+  'Youtuber',
+  'Farmer',
+  'Journalist',
+  'Pilot',
+];
 
-const sex = () => (Math.random() < 0.5 ? 'male' : 'female');
+const age = () => Math.floor(Math.random() * 70 + 10);
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -50,11 +67,12 @@ function getRandomInt(min, max) {
 export function generatePerson() {
   const rand1 = getRandomInt(0, firstNames.length);
   const rand2 = getRandomInt(0, secondNames.length);
+  const rand3 = getRandomInt(0, job.length);
   return {
     firstName: firstNames[rand1],
     secondName: secondNames[rand2],
     age: age(),
-    sex: sex(),
+    job: job[rand3],
     face: 'https://www.thispersondoesnotexist.com/image?' + Math.random(),
   };
 }

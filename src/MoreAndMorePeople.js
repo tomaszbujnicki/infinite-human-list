@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './MoreAndMorePeople.css';
-
+import { generatePerson } from './generatePerson';
 import { SinglePerson } from './SinglePerson';
 
 const MoreAndMorePeople = ({ items }) => {
   const [count, setCount] = useState(1);
-  const [max, setMax] = useState(8);
+  const [max, setMax] = useState(6);
 
   useEffect(() => {
-    console.log('time');
     if (count < max) {
       setTimeout(() => {
         setCount(count + 1);
@@ -16,19 +14,30 @@ const MoreAndMorePeople = ({ items }) => {
     }
   });
 
+  const increaseMax = () => {
+    if (count < max) return;
+    if (items.length > max) {
+      setMax(max + 6);
+      console.log('Ładuje');
+    } else {
+      console.log('Generuje');
+      for (let i = 0; i < 6; i++) {
+        items.push(generatePerson());
+      }
+    }
+  };
+
   useEffect(() => {
-    setInterval(() => {
+    const id = setInterval(() => {
       const scrollHeight = document.scrollingElement.scrollHeight;
       const clientHeight = document.scrollingElement.clientHeight;
       const scrollTop = document.scrollingElement.scrollTop;
-
       if (scrollHeight - 20 <= clientHeight + scrollTop) {
-        console.log('end');
+        increaseMax();
       }
-
-      console.log('__________________________');
-    }, 5000);
-  }, []);
+    }, 100);
+    return () => clearInterval(id);
+  });
 
   const list = [];
   for (let i = 0; i < count; i++) {
@@ -36,43 +45,10 @@ const MoreAndMorePeople = ({ items }) => {
   }
 
   return (
-    <div className="App">
+    <div>
       <ul>{list}</ul>
     </div>
   );
 };
-
-class MoreAndMorePeopleClass extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      people: props.people,
-      count: 1,
-      max: 10,
-    };
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1500);
-  }
-
-  tick() {
-    if (this.state.count < this.state.max) {
-      this.setState({ count: this.state.count + 1 });
-    }
-  }
-
-  render() {
-    const list = [];
-    for (let i = 0; i < this.state.count; i++) {
-      list.push(<SinglePerson person={this.state.people[i]} key={i} />);
-    }
-    return (
-      <div className="App">
-        <ul>{list}</ul>
-      </div>
-    );
-  }
-}
 
 export default MoreAndMorePeople;

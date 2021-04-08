@@ -1,0 +1,94 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  height: auto;
+  width: 100%;
+  background-color: lightblue;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+
+ul {
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+.image > img {
+  width: auto;
+  height: 100%;
+}
+
+.card {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: white;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.card__heading {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Montserrat', sans-sherif;
+  color: white;
+  padding: 2.5rem 1.25rem 1.25rem;
+  text-align: right;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+}
+.card__name {
+  font-size: 2rem;
+  margin: 0.2rem;
+}
+
+.card__description {
+  font-size: 1.4rem;
+  opacity: 0.8;
+}
